@@ -1,0 +1,11 @@
+{
+  "build": {
+    "env": {
+      "SESSION_SECRET": "@session_secret",
+      "SECRET_KEY": "@secret_key_li",
+      "CLIENT_ID": "86vdyr7busnieb",
+      "CLIENT_SECRET": "UfIOY0TyMsPrjUaM",
+      "REDIRECT_URI": "https://portfolio-bryant.now.sh/api/callback"
+    }
+  }
+}

@@ -9,7 +9,11 @@ var morgan = require("morgan");
 express()
   .use(morgan("combined"))
   .use(
-    session({ secret: process.env.SEC, saveUninitialized: true, resave: true })
+    session({
+      secret: process.env.SESSION_SECRET,
+      saveUninitialized: true,
+      resave: true,
+    })
   )
   .use(parser.urlencoded({ extended: true }))
   .use(grant(config))

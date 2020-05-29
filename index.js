@@ -5,6 +5,7 @@ var parser = require("body-parser");
 var grant = require("grant-express");
 var config = require("./grant.config.js");
 var morgan = require("morgan");
+const PORT = process.env.PORT || 5000;
 
 express()
   .use(morgan("combined"))
@@ -32,4 +33,4 @@ express()
     console.log(access_token);
     res.end("nice!");
   })
-  .listen(3000);
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));

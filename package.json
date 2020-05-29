@@ -2,6 +2,9 @@
   "name": "express-grant-api",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "12.x"
+  },
   "repository": "https://github.com/bryant00/express-grant-api.git",
   "author": "bryant00 <bryantpatton@gmail.com>",
   "license": "MIT",

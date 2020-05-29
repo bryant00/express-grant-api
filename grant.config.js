@@ -1,6 +1,6 @@
 module.exports = {
   defaults: {
-    origin: "http://localhost:3000",
+    origin: process.env.API_ORIGIN,
     state: true,
     transport: "session",
   },

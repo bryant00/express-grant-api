@@ -1,7 +1,7 @@
 {
   "name": "express-grant-api",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "repository": "https://github.com/bryant00/express-grant-api.git",
   "author": "bryant00 <bryantpatton@gmail.com>",
   "license": "MIT",
@@ -12,5 +12,8 @@
     "express-session": "^1.17.1",
     "grant-express": "^5.0.0",
     "morgan": "^1.10.0"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }

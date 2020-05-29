@@ -1,11 +1,20 @@
 {
+  "builds": [{ "src": "index.js", "use": "@now/node-server" }],
+  "routes": [
+    {
+      "src": "/hello",
+      "dest": "/index.js",
+      "methods": ["GET"]
+    }
+  ],
   "build": {
     "env": {
       "SESSION_SECRET": "@session_secret",
       "SECRET_KEY": "@secret_key_li",
       "CLIENT_ID": "@client_id_li",
       "CLIENT_SECRET": "@client_secret_li",
-      "REDIRECT_URI": "https://express-grant-api.now.sh/api/callback"
+      "REDIRECT_URI": "https://express-grant-api.now.sh/api/callback",
+      "API_ORIGIN": "https://express-grant-api.now.sh"
     }
   }
 }

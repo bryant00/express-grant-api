@@ -17,7 +17,7 @@ express()
   )
   .use(parser.urlencoded({ extended: true }))
   .use(grant(config))
-  .get("/login", (req, res) => {
+  .get("/", (req, res) => {
     res.writeHead(200, { "content-type": "text/html" });
     res.end(`
       <!DOCTYPE html>

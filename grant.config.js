@@ -2,14 +2,13 @@ module.exports = {
   defaults: {
     origin: process.env.API_ORIGIN,
     state: true,
-    transport: "session",
+    transport: "querystring",
   },
   linkedin: {
     key: process.env.CLIENT_ID,
     secret: process.env.CLIENT_SECRET,
-    callback: "/hello",
-    // callback: process.env.REDIRECT_URL,
-    // scope: process.env.SCOPE,
+    dynamic: ["callback"],
+    transport: "querystring",
     scope: [
       "r_basicprofile",
       "r_emailaddress",
@@ -20,5 +19,11 @@ module.exports = {
       "r_organization_social",
       "rw_organization_admin",
     ],
+    overrides: {
+      ext: {
+        dynamic: ["callback"],
+        transport: "querystring",
+      },
+    },
   },
 };

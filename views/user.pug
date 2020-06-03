@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  -
+    let data =JSON.parse(reqjson)
+    let me = {"a":"b"}
+    //- if (profile) {me = JSON.parse(profile)}
+
+
+  h1 Login API
+  h3 User Page
+  h3 The user page
+  h3 access_token: #{access_token}
+  h3 callback: #{callback}
+  div(class="form-example")
+    a(href="/") Home Page
+  h3 p: #{profile}
+  h3 profile:
+  ul
+  each val, key in me
+    li= key + ': ' + JSON.stringify(val)
+
+  h3 HTTP request:
+  ul
+  each val, key in data
+    li= key + ': ' + JSON.stringify(val)
+
+
+
+//- each val, key in JSON.parse(reqjson)

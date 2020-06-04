@@ -5,7 +5,7 @@
  */
 const { port, env } = require('../vars.config.js');
 const logger = require('../logger.config.js');
-var app = require('../app');
+var app = require('../index.js');
 var debug = require('debug')('express-grant-api:server');
 var http = require('http');
 

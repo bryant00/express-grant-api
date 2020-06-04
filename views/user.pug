@@ -1,11 +1,10 @@
 extends layout
 
 block content
-  -
-    let data =JSON.parse(reqjson)
-    let me = {"a":"b"}
-    //- if (profile) {me = JSON.parse(profile)}
-
+  - if (reqjson===undefined) {reqjson=JSON.stringify({"a":"c"})}
+  - let data =JSON.parse(reqjson)
+  - if (profile===undefined) {profile=JSON.stringify({"a":"c"})}
+  - let me =JSON.parse(profile)
 
   h1 Login API
   h3 User Page
@@ -14,7 +13,6 @@ block content
   h3 callback: #{callback}
   div(class="form-example")
     a(href="/") Home Page
-  h3 p: #{profile}
   h3 profile:
   ul
   each val, key in me

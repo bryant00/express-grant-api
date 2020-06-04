@@ -67,6 +67,4 @@ const getProfile = async (token) => {
   return me;
 };
 
-// countBreeds()
-
 module.exports = router;

@@ -1,0 +1,47 @@
+extends layout
+
+
+block content
+  h1 Login API
+  h3 Post User Page
+  //- form(action='connect/linkedin', method='post', class="form-example")
+  //- form(action='/user', method='post', class="form-example")
+  //-   div(class="form-example")
+  //-     label(for="callback") Enter Redirect URL
+  //-     input(type="text", name="callback", value="http://localhost:3000/user")
+  //-   div(class="form-example")
+  //-     button(type='submit', value='submit') User Page - Post
+
+  //- h3 Get User Page
+  //- form(action='/user', method='get', class="form-example")
+  //-   div(class="form-example")
+  //-     label(for="callback") Enter Redirect URL
+  //-     input(type="text", name="callback", value="http://localhost:3000/user")
+  //-   div(class="form-example")
+  //-     button(type='submit', value='submit') User Page - Get
+
+  - var url = 'user/grant';
+
+  h3 Dynamic Callback
+  p #{link}
+  form(action='/connect/linkedin/express', method='get', class="form-example")
+    div(class="form-example")
+      label(for="client") Enter Redirect URL
+      input(type="text", name="client", value="" placeholder = "http://localhost:3000/user/grant" required)
+
+    div(class="form-example")
+      button(type='submit', value='submit') User Page - Get
+
+
+  h3 Server Web App Callback
+  p #{link}
+  form(action='/connect/linkedin/myserver', method='get', class="form-example")
+    div(class="form-example")
+      label(for="client") Enter Redirect URL
+      input(type="text", name="client", value="http://localhost:3000/user/grantserver")
+
+
+    div(class="form-example")
+      button(type='submit', value='submit') User Page - Get
+
+

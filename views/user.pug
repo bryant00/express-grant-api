@@ -6,13 +6,19 @@ block content
   - if (profile===undefined) {profile=JSON.stringify({"a":"c"})}
   - let me =JSON.parse(profile)
 
+
   h1 Login API
   h3 User Page
   h3 The user page
-  h3 access_token: #{access_token}
-  h3 callback: #{callback}
+  h3 access_token:
+  ul
+    li #{access_token}
   div(class="form-example")
     a(href="/") Home Page
+
+  h3 client:
+  ul
+    li #{client}
   h3 profile:
   ul
   each val, key in me

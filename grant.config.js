@@ -24,16 +24,11 @@ module.exports = {
     // response: ["tokens", "raw", "jwt", "profile", "code"],
     overrides: {
       express: {
-        callback: '/loggedin',
+        callback: '/user/grant',
         transport: 'session'
       },
-      ext: {
-        profile_url: 'https://api.linkedin.com/v2/me',
-        // scope: ["https://www.linkedin.com/oauth/v2/authorization/me"],
-        scope: ['r_basicprofile', 'r_emailaddress'],
-        custom_params: { access_token: 'tokens' },
-        response: ['tokens', 'raw', 'profile'],
-        callback: '/hello',
+      myserver: {
+        callback: '/user/grantserver',
         transport: 'session'
       }
     }

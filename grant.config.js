@@ -18,8 +18,7 @@ module.exports = {
       'r_ads_reporting',
       'r_organization_social',
       'rw_organization_admin',
-      'w_member_social',
-      'r_liteprofile'
+      'w_member_social'
     ],
     // response: ["tokens", "raw", "jwt", "profile", "code"],
     overrides: {

@@ -6,15 +6,14 @@ block content
   - if (profile===undefined) {profile=JSON.stringify({"a":"c"})}
   - let me =JSON.parse(profile)
 
-
+  div(class="form-example")
+    a(href="/") Home Page
   h1 Login API
   h3 User Page
   h3 The user page
   h3 access_token:
   ul
     li #{access_token}
-  div(class="form-example")
-    a(href="/") Home Page
 
   h3 client:
   ul

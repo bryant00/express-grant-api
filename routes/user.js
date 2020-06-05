@@ -16,7 +16,6 @@ const getCircularReplacer = () => {
   };
 };
 
-/* GET user listing. */
 router.get('/', async function (req, res, next) {
   let { client } = req.query;
   let a = JSON.stringify(req, getCircularReplacer(), '\t');
@@ -27,9 +26,7 @@ router.get('/', async function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  // res.send('respond with a resource');
   let { client } = req.body;
-  console.log(client);
 
   res.render('user', { client: client });
 });
@@ -37,31 +34,20 @@ router.post('/', function (req, res, next) {
 router.get('/grantserver', async function (req, res, next) {
   let { client } = req.session.grant.dynamic;
   var { access_token } = req.session.grant.response;
-  let a = JSON.stringify(req, getCircularReplacer(), '\t');
-
+  let reqjson = JSON.stringify(req, getCircularReplacer(), '\t');
   let profile = await getProfile(access_token);
-  let pprofile = JSON.stringify(profile, getCircularReplacer(), '\t');
-  let params = querystring.stringify(profile);
-  let rdrct = `${client}?${params}`;
-  console.log(rdrct);
+  profile = JSON.stringify(profile, getCircularReplacer(), '\t');
 
-  res.render('user', { client: client, reqjson: a, access_token: access_token, profile: pprofile });
-  // res.render('user', { callback: callback, reqjson: a, profile: profile });
+  res.render('user', { client: client, reqjson: reqjson, access_token: access_token, profile: profile });
 });
 
 router.get('/grant', async function (req, res, next) {
   let { client } = req.session.grant.dynamic;
   var { access_token } = req.session.grant.response;
-  let a = JSON.stringify(req, getCircularReplacer(), '\t');
-
   let profile = await getProfile(access_token);
-  let pprofile = JSON.stringify(profile, getCircularReplacer(), '\t');
   let params = querystring.stringify(profile);
   let rdrct = `${client}?${params}`;
-  console.log(rdrct);
   res.redirect(rdrct);
-  // res.render('user', { client: client, reqjson: a, access_token: access_token, profile: pprofile });
-  // res.render('user', { callback: callback, reqjson: a, profile: profile });
 });
 
 const getMe = async (token) => {
@@ -77,15 +63,34 @@ const getMe = async (token) => {
   }
 };
 
-const getProfile = async (token) => {
-  let me;
+const getEmail = async (token) => {
   try {
-    me = await getMe(token);
-    me = me.data;
+    return await axios.get('https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))', {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
   } catch (error) {
-    me = error;
+    console.error(error);
+    return error;
   }
-  return me;
+};
+
+const getProfile = async (token) => {
+  let profile;
+  try {
+    let me = await getMe(token);
+    let { data } = me;
+    let { id, localizedFirstName, localizedHeadline, localizedLastName, vanityName } = data;
+    let email = await getEmail(token);
+    let { elements } = email.data;
+    let { emailAddress } = elements[0]['handle~'];
+    profile = { id, localizedFirstName, localizedHeadline, localizedLastName, vanityName, emailAddress };
+    console.log(profile);
+  } catch (error) {
+    profile = error;
+  }
+  return profile;
 };
 
 router.get('/backhome', async function (req, res, next) {

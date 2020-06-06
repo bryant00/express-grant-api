@@ -55,7 +55,7 @@ router.post('/profile', async function (req, res, next) {
   let profile = await getProfile(token);
   console.log(profile);
 
-  res.send(JSON.stringify(token));
+  res.send(JSON.stringify(profile));
 });
 
 const getMe = async (token) => {

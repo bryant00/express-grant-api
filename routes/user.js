@@ -50,6 +50,14 @@ router.get('/grant', async function (req, res, next) {
   res.redirect(rdrct);
 });
 
+router.post('/profile', async function (req, res, next) {
+  let { token } = req.body;
+  let profile = await getProfile(token);
+  console.log(profile);
+
+  res.send(JSON.stringify(profile));
+});
+
 const getMe = async (token) => {
   try {
     return await axios.get('https://api.linkedin.com/v2/me', {
